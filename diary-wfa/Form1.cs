@@ -30,7 +30,6 @@ namespace diary_wfa
 
                 general.Refresh(previousEntriesListBox, entryTitleBox, currentEntryRichTextBox);
             }
-
         }
 
         private void enterButton_Click(object sender, EventArgs e)
@@ -43,7 +42,7 @@ namespace diary_wfa
             }
             else
             {
-                general.SwitchTo(Mode.Writing, currentEntryRichTextBox, entryTitleBox,  enterButton, previousEntriesListBox);
+                general.SwitchTo(Mode.Writing, currentEntryRichTextBox, entryTitleBox, enterButton, previousEntriesListBox);
             }
         }
 
@@ -77,26 +76,25 @@ namespace diary_wfa
         {
             if (general.dragging)
             {
-                general.Drag(this,e);
+                general.Drag(this, e);
             }
         }
 
-       
-
         private void previousEntriesListBox_MouseDown(object sender, MouseEventArgs e)
         {
-            
             if (e.Button == MouseButtons.Right)
             {
                 general.DeleteEntry(sender);
-                
+
                 general.Write(path, general.Serialize(GeneralMechanism.entries));
 
                 general.Refresh(previousEntriesListBox);
             }
-
         }
 
-        
+        private void themeButton_Click(object sender, EventArgs e)
+        {
+            general.ChangeTheme(this, currentEntryRichTextBox, previousEntriesListBox, entryTitleBox, themeButton, enterButton);
+        }
     }
 }

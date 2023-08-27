@@ -11,7 +11,6 @@ namespace diary_wfa
 {
     public class GeneralMechanism
     {
-
         public static List<Entry> entries = new List<Entry>();
         public static Form entryForm = new Form();
 
@@ -45,7 +44,6 @@ namespace diary_wfa
         }
 
         public List<Entry> Read(string path) => JsonSerializer.Deserialize<List<Entry>>(File.ReadAllText(path));
-        
 
         public void Refresh(ListBox listBox, TextBox textBox, RichTextBox richTextBox)
         {
@@ -117,28 +115,57 @@ namespace diary_wfa
             form.Update();
         }
 
-        //public void ChangeTheme(Form form, RichTextBox richTextBox, ListBox listBox)
-        //{
-        //    if(lightTheme)
-        //    {
-        //        richTextBox.BackColor = Color.FromArgb(45, 45, 45);
-        //        listBox.BackColor = Color.FromArgb(45, 45, 45);
-        //        richTextBox.ForeColor = Color.FromArgb(240, 240, 240);
-        //        listBox.ForeColor = Color.FromArgb(240, 240, 240);
-        //        form.BackColor = Color.FromArgb(45, 45, 45);
-        //        form.ForeColor = Color.FromArgb(240, 240, 240);
-        //        lightTheme = !lightTheme;
-        //    }
-        //    else
-        //    {
-        //        richTextBox.BackColor = SystemColors.Control;
-        //        listBox.BackColor = SystemColors.Control;
-        //        richTextBox.ForeColor = SystemColors.ControlText;
-        //        listBox.ForeColor = SystemColors.ControlText;
-        //        form.BackColor = SystemColors.Control;
-        //        form.ForeColor = SystemColors.ControlText;
-        //        lightTheme = !lightTheme;
-        //    }
-        //}
+        public void ChangeTheme(Form form, RichTextBox richTextBox, ListBox listBox, TextBox entryTitleBox, Button themeButton, Button enterButton )
+        {
+            if (lightTheme)
+            {
+                richTextBox.BackColor = Color.FromArgb(45, 45, 45);
+                richTextBox.ForeColor = Color.FromArgb(240, 240, 240);
+
+                listBox.BackColor = Color.FromArgb(45, 45, 45);
+                listBox.ForeColor = Color.FromArgb(240, 240, 240);
+
+                form.BackColor = Color.FromArgb(45, 45, 45);
+                form.ForeColor = Color.FromArgb(240, 240, 240);
+
+                themeButton.BackColor = Color.FromArgb(45, 45, 45);
+                themeButton.ForeColor = Color.FromArgb(240, 240, 240);
+
+                enterButton.BackColor = Color.FromArgb(45, 45, 45);
+                enterButton.ForeColor = Color.FromArgb(240, 240, 240);
+
+                entryTitleBox.ForeColor = SystemColors.WindowText;
+                entryTitleBox.BackColor = SystemColors.Window;
+
+                themeButton.Text = "Light Theme";
+               
+                lightTheme = !lightTheme;
+                
+            }
+            else
+            {
+                richTextBox.BackColor = Color.Silver;
+                richTextBox.ForeColor = SystemColors.WindowText;
+                
+                listBox.BackColor = Color.Silver;
+                listBox.ForeColor = SystemColors.WindowText;
+                
+                form.BackColor = Color.Silver;
+                form.ForeColor = SystemColors.ControlText;
+
+                themeButton.ForeColor = SystemColors.ControlText;
+                themeButton.BackColor = Color.Silver;
+                            
+                enterButton.BackColor = Color.Silver;
+                enterButton.ForeColor = SystemColors.ControlText;
+
+                entryTitleBox.ForeColor = SystemColors.WindowText;
+                entryTitleBox.BackColor = SystemColors.Window;
+
+                themeButton.Text = "Dark Theme";
+
+                lightTheme = !lightTheme;
+            }
+        }
     }
 }

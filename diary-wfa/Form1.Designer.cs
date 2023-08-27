@@ -33,7 +33,7 @@
             previousEntriesListBox = new ListBox();
             entryTitleBox = new TextBox();
             enterButton = new Button();
-            settingsButton = new Button();
+            themeButton = new Button();
             exitButton = new Button();
             pictureBox1 = new PictureBox();
             label1 = new Label();
@@ -82,22 +82,25 @@
             // enterButton
             // 
             enterButton.AutoSize = true;
-            enterButton.Location = new Point(300, 630);
+            enterButton.FlatStyle = FlatStyle.Popup;
+            enterButton.Location = new Point(300, 628);
             enterButton.Name = "enterButton";
-            enterButton.Size = new Size(103, 29);
+            enterButton.Size = new Size(103, 31);
             enterButton.TabIndex = 3;
             enterButton.Text = "Enter";
             enterButton.UseVisualStyleBackColor = true;
             enterButton.Click += enterButton_Click;
             // 
-            // settingsButton
+            // themeButton
             // 
-            settingsButton.Location = new Point(922, 630);
-            settingsButton.Name = "settingsButton";
-            settingsButton.Size = new Size(113, 29);
-            settingsButton.TabIndex = 4;
-            settingsButton.Text = "Settings";
-            settingsButton.UseVisualStyleBackColor = true;
+            themeButton.FlatStyle = FlatStyle.Popup;
+            themeButton.Location = new Point(923, 628);
+            themeButton.Name = "themeButton";
+            themeButton.Size = new Size(113, 29);
+            themeButton.TabIndex = 4;
+            themeButton.Text = "Dark Theme";
+            themeButton.UseVisualStyleBackColor = true;
+            themeButton.Click += themeButton_Click;
             // 
             // exitButton
             // 
@@ -151,7 +154,7 @@
             Controls.Add(pictureBox1);
             Controls.Add(minimizeButton);
             Controls.Add(exitButton);
-            Controls.Add(settingsButton);
+            Controls.Add(themeButton);
             Controls.Add(enterButton);
             Controls.Add(entryTitleBox);
             Controls.Add(previousEntriesListBox);
@@ -177,7 +180,7 @@
         private ListBox previousEntriesListBox;
         private TextBox entryTitleBox;
         private Button enterButton;
-        private Button settingsButton;
+        private Button themeButton;
         private Button exitButton;
         private PictureBox pictureBox1;
         private Label label1;
