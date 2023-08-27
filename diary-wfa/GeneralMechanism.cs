@@ -4,12 +4,13 @@ using System.Linq;
 using System.Text;
 using System.Text.Json;
 using System.Threading.Tasks;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement.Window;
+using System.Windows.Forms;
 
 namespace diary_wfa
 {
     public class GeneralMechanism
     {
-        public Form Form;
 
         public static List<Entry> entries = new List<Entry>();
         public static Form entryForm = new Form();
@@ -57,9 +58,6 @@ namespace diary_wfa
 
             textBox.Clear();
             richTextBox.Clear();
-
-            
-            
         }
 
         public void Refresh(ListBox listBox)
@@ -70,7 +68,6 @@ namespace diary_wfa
             {
                 listBox.Items.Add(entry.Title + " - " + entry.Date);
             }
-
         }
 
         public void SwitchTo(Mode mode, RichTextBox currentEntryRichTextBox, TextBox entryTitleBox, Button enterButton, ListBox previousEntriesListBox)
@@ -104,8 +101,14 @@ namespace diary_wfa
         public void DeleteEntry(object sender)
         {
             ListBox listBox = (ListBox)sender;
-            if(listBox.SelectedIndex != -1) entries.RemoveAt(listBox.SelectedIndex);
 
+            if (listBox.SelectedIndex != -1)
+            {
+                DialogResult dialogResult
+            = MessageBox.Show($"Do you want to delete the entry titled '{entries[listBox.SelectedIndex].Title}' ?", "Entry Deletion", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+
+                if (dialogResult == DialogResult.Yes) entries.RemoveAt(listBox.SelectedIndex);
+            }
         }
 
         public void Drag(Form form, MouseEventArgs e)

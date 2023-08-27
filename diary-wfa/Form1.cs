@@ -11,8 +11,6 @@ namespace diary_wfa
             InitializeComponent();
             path = "Entries.json";
             general = new GeneralMechanism();
-            general.Form = this;
-
         }
 
         private void Form1_Load(object sender, EventArgs e)
