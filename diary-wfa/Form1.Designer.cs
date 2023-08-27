@@ -173,11 +173,11 @@
 
         #endregion
 
-        public RichTextBox currentEntryRichTextBox;
-        public ListBox previousEntriesListBox;
-        public TextBox entryTitleBox;
-        public Button enterButton;
-        public Button settingsButton;
+        private RichTextBox currentEntryRichTextBox;
+        private ListBox previousEntriesListBox;
+        private TextBox entryTitleBox;
+        private Button enterButton;
+        private Button settingsButton;
         private Button exitButton;
         private PictureBox pictureBox1;
         private Label label1;

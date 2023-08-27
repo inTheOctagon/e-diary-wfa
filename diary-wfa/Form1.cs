@@ -1,3 +1,5 @@
+using static diary_wfa.GeneralMechanism;
+
 namespace diary_wfa
 {
     public partial class Form1 : Form
@@ -9,6 +11,7 @@ namespace diary_wfa
             InitializeComponent();
             path = "Entries.json";
             general = new GeneralMechanism();
+            general.Form = this;
 
         }
 
@@ -42,15 +45,8 @@ namespace diary_wfa
             }
             else
             {
-                general.writingMode = true;
-
-                currentEntryRichTextBox.ReadOnly = false;
-                currentEntryRichTextBox.Text = string.Empty;
-                entryTitleBox.Visible = true;
-                enterButton.Text = "Enter";
+                general.SwitchTo(Mode.Writing, currentEntryRichTextBox, entryTitleBox,  enterButton, previousEntriesListBox);
             }
-
-
         }
 
         private void minimizeButton_Click(object sender, EventArgs e)
@@ -60,12 +56,7 @@ namespace diary_wfa
 
         private void previousEntriesListBox_MouseDoubleClick(object sender, MouseEventArgs e)
         {
-            general.writingMode = false;
-
-            currentEntryRichTextBox.ReadOnly = true;
-            general.ShowEntry(previousEntriesListBox, currentEntryRichTextBox);
-            entryTitleBox.Visible = false;
-            enterButton.Text = "Writing Mode";
+            general.SwitchTo(Mode.Reading, currentEntryRichTextBox, entryTitleBox, enterButton, previousEntriesListBox);
         }
 
         private void exitButton_Click(object sender, EventArgs e)

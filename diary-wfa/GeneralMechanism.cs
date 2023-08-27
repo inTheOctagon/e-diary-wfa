@@ -9,6 +9,7 @@ namespace diary_wfa
 {
     public class GeneralMechanism
     {
+        public Form Form;
 
         public static List<Entry> entries = new List<Entry>();
         public static Form entryForm = new Form();
@@ -18,6 +19,13 @@ namespace diary_wfa
         public bool dragging = false; 
 
         public Point lastLocation = new Point();
+
+        public enum Mode
+        {
+            Writing = 1,
+            Reading
+        }
+
         public void CreateEntry(string title, string text, string date)
         {
             Entry entry = new Entry(title, text, date);
@@ -63,6 +71,29 @@ namespace diary_wfa
                 listBox.Items.Add(entry.Title + " - " + entry.Date);
             }
 
+        }
+
+        public void SwitchTo(Mode mode, RichTextBox currentEntryRichTextBox, TextBox entryTitleBox, Button enterButton, ListBox previousEntriesListBox)
+        {
+            switch (mode) 
+            {
+                case Mode.Writing:
+                    writingMode = true;
+                    
+                    currentEntryRichTextBox.ReadOnly = false;
+                    currentEntryRichTextBox.Text = string.Empty;
+                    entryTitleBox.Visible = true;
+                    enterButton.Text = "Enter";
+                    break;
+                case Mode.Reading:
+                    writingMode = false;
+
+                    currentEntryRichTextBox.ReadOnly = true;
+                    ShowEntry(previousEntriesListBox, currentEntryRichTextBox);
+                    entryTitleBox.Visible = false;
+                    enterButton.Text = "Writing Mode";
+                    break;
+            }
         }
 
         public void ShowEntry(ListBox listBox, RichTextBox richTextBox)
